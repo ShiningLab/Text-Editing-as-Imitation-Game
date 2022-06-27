@@ -1,3 +1,23 @@
+*.bin
+*.json
+*.pt
+log/
+*.pkl
+wikismall/
+wikilarge/
+punctuation_restoration/
+asset/
+*.ipynb
+*.zip
+*.icloud
+archive/
+.idea/
+raw/
+reference/
+*.json
+*.png
+*.pt
+.DS_Store
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
