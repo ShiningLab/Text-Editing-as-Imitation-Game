@@ -25,7 +25,7 @@ This repository is for the paper Text Editing as Imitation Game
 ```
 Text-Editing-AS-Imitation-Game/
 ├── README.md
-├── main
+└── main
 ```
 
 ## Dependencies
