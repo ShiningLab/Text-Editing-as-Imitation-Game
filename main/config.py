@@ -16,7 +16,7 @@ from res.settings import SPECIAL_TOKENS_DICT
 class Config():
 	# config settings
 	def __init__(self):
-		self.seed = 1
+		self.seed = 0
 		self.load_ckpt = False
 		# aor for Arithmetic Operators Restoration
 		# aes for Arithmetic Equation Simplification
@@ -37,7 +37,7 @@ class Config():
 		# model - base_seq2seq_lstm, seq2seq_lstm
 		# base_lstm, lstm, lstm0
 		# lm, lm_lstm
-		self.model = 'lm'
+		self.model = 'lm_lstm'
 		# trajectory augmentation
 		self.aug_trajectory = True
 		# learning

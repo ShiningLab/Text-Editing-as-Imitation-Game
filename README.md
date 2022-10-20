@@ -1,22 +1,8 @@
 # Text-Editing-AS-Imitation-Game
-This repository is for the paper Text Editing as Imitation Game
-## Methods
-+ seq2seq_lstm
-+ lstm
-+ lm_lstm
-+ lm
 
-## Language Models
-+ bert-base-uncased
-+ bert-large-uncased
-+ albert-base-v2
-+ albert-large-v2
-+ roberta-base
-+ roberta-large
-+ xlm-roberta-base
-+ xlm-roberta-large
-+ funnel-transformer/large
-+ funnel-transformer/xlarge
+This repository is for the paper Text Editing as Imitation Game in *Findings of the Association for Computational Linguistics: EMNLP 2022*.
+
+**The finalized code and processed data will be released soon.**
 
 ## Directory
 + **main/env** - Game Environment
