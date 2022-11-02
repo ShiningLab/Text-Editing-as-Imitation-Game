@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # dependency
@@ -12,10 +12,10 @@ import random
 import numpy as np
 
 
-# the general environment class for text editing
 class TextEditEnv():
-    """docstring for TextEditEnv"""
-    
+    """
+    The general game environment class for text editing
+    """
     def __init__(self):
         super(TextEditEnv, self).__init__()
         self.init_path()

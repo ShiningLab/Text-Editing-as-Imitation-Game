@@ -1,16 +1,21 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
+# dependency
+# public
 import numpy as np
 
 
 class Editops:
     def __init__(self, metric):
         '''
-        metric: the edit distance algorithm, shoule be one of lcs/levenshtein/damerau-levenshtein.
+        The class of the trajectory generation (TG) algorithm
+        to convert input text -> output text into a list of state -> action
+        given a predefined edit metric such as lcs, levenshtein, and damerau
+            -metric: the edit distance algorithm, shoule be one of lcs/levenshtein/damerau-levenshtein.
         '''
         metric = metric.lower()
         if metric != 'lcs' and metric != 'levenshtein' and not metric.startswith('damerau'):

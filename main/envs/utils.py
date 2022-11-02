@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-__author__ = 'author'
-__email__ = 'email'
-
-
-# dependency
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 def load_txt_to_list(path: str) -> list:

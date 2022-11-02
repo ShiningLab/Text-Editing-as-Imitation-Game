@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # built-in
@@ -14,12 +14,12 @@ from envs.utils import load_txt_to_list, parse_pos
 
 class GameEnv(TextEditEnv):
 	"""
-	docstring for GameEnv
+    The game environment class for Arithmetic Operators Restoration (AOR)
 	"""
 	def __init__(self, metric='levenshtein'):
 		super(GameEnv, self).__init__()
 		self.env = 'aor'
-		# depend on action definition
+        # only insert operation in AOR
 		# 2 for [position, token]
 		self.tgt_seq_len = 2
 		self.operators = set(['+', '-', '*', '/', '=='])
@@ -35,12 +35,11 @@ class GameEnv(TextEditEnv):
 		raw_valid_ys = load_txt_to_list(os.path.join(RAW_AOR, 'val_y.txt'))
 		raw_test_xs = load_txt_to_list(os.path.join(RAW_AOR, 'test_x.txt'))
 		raw_test_ys = load_txt_to_list(os.path.join(RAW_AOR, 'test_y.txt'))
-
+        # save data size
 		self.data_size_dict = {}
 		self.data_size_dict['train'] = len(raw_train_xs)
 		self.data_size_dict['valid'] = len(raw_valid_xs)
 		self.data_size_dict['test'] = len(raw_test_xs)
-
 		return (raw_train_xs, raw_train_ys, raw_valid_xs, raw_valid_ys, raw_test_xs, raw_test_ys)
 	
 	def make(self, N=10, L=5, D=10000):
@@ -59,12 +58,16 @@ class GameEnv(TextEditEnv):
 		if isinstance(x, str):
 			# white space tokenization
 			x, y = x.split(), y.split()
+        # to avoid mutable issue
 		if do_copy:
 			x, y = x.copy(), y.copy()
+        # initialize placeholder
 		xs = [x.copy()]
 		ys_ = []
 		editops = self.traj_generator.editops(x, y)
-		c = 0 
+		c = 0
+        # only insert operation in AOR
+        # operation, index i, index j
 		for _, i, j in editops: 
 			i += c
 			y_ = ['<pos_{}>'.format(i), y[j]]
@@ -76,10 +79,13 @@ class GameEnv(TextEditEnv):
 		return xs, ys_
 
 	def one_step_infer(self, state, action, do_copy=True):
+        # to avoid mutable issue
 		if do_copy:
 			state = state.copy()
+        # check if final action
 		if action.count(self.DONE) == len(action):
 			return state
+        # position, target token
 		pos, tk = action
 		if pos.startswith('<pos_') and tk in self.operators: 
 			pos = parse_pos(pos)
