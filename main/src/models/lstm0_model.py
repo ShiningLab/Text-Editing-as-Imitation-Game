@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # built in
@@ -68,7 +68,7 @@ class ModelGraph(nn.Module):
 	
 	def update_config(self, **kwargs):
 		# encoder
-		self.config.en_embedding_size = 300 if self.config.embed else 512
+		self.config.en_embedding_size = 512
 		self.config.en_hidden_size = 512
 		self.config.en_num_layers = 4
 		# decoder

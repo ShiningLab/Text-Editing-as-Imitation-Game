@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # dependency
@@ -14,8 +14,10 @@ from tqdm import tqdm
 from envs.utils import parse_pos
 
 
-# AE
 def update_position(offset, actions):
+	"""
+	To update the following action accordingly.
+	"""
 	actions = copy.deepcopy(actions)
 	for action in actions:
 		for i, item in enumerate(action):
@@ -25,6 +27,9 @@ def update_position(offset, actions):
 	return actions
 
 def augmentation(states, state, goal, actions, env, remove_first_action=False, remove_last_action=True):
+	"""
+	The function of trajectory augmentation (TA) algorithm.
+	"""
 	# initialization
 	actions = actions.copy()
 	if remove_first_action:
@@ -62,32 +67,3 @@ def generic_augmentor(xs, ys, env):
 		return states, actions
 	else:
 		return [], []
-
-# PUN
-def random_combination(iterable, r):
-	pool = tuple(iterable)
-	n = len(pool)
-	indices = sorted(np.random.choice(range(n), r))
-	return [pool[i] for i in indices]
-	
-def online_pun_augmentor(states, state_masks, env):
-	goal_state = states[-1].copy()
-	goal_state_mask = state_masks[-1].copy()
-	# pun idxes record
-	pun_idxes_set = set()
-	for s in states:
-		pun_idxes = [str(i) for i, token in enumerate(s) if token in env.puns]
-		pun_idxes_set.add(' '.join(pun_idxes))
-	if len(pun_idxes) > 1:
-		# valid pun idxes combs pool
-		while True:
-			L = np.random.choice(range(1, len(pun_idxes)))
-			candidate = random_combination(pun_idxes, L)
-			candidate = ' '.join(candidate)
-			if candidate not in pun_idxes_set:
-				break
-		pun_idx_set = set([int(idx) for idx in candidate.split()])
-		aug_state, aug_state_mask = map(list, zip(*[(token, mask) for i, (token, mask) in enumerate(zip(goal_state, goal_state_mask)) 
-													if token not in env.puns or i in pun_idx_set]))
-		return env.get_trajectories(aug_state, aug_state_mask, goal_state.copy())
-	return [], [], []

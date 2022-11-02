@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # dependency
@@ -142,7 +142,7 @@ class Trainer(Base_Trainer):
 			epoch_xs += raw_xs
 			epoch_ys += raw_ys
 			epoch_ys_ += ys_
-			# break
+			break
 		return epoch_loss / epoch_steps, epoch_xs, epoch_ys, epoch_ys_
 
 	def train(self):
@@ -176,7 +176,7 @@ class Trainer(Base_Trainer):
 				self.log_dict['end_time'] = datetime.now()
 				helper.save_pickle(self.config.LOG_SAVE_POINT, self.log_dict)
 				break
-			# break
+			break
 		
 	def valid_and_test(self):
 		self.model.eval()

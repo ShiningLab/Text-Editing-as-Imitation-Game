@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # dependency
@@ -11,6 +11,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 # private
 from src.models.attention import LSTMRNNDecoderAttention
+
 
 class AttBiLSTMRNNDecoder(nn.Module):
 	"""Bidirectional RNN Decoder with Long Short Term Memory (LSTM) Unit and Attention"""

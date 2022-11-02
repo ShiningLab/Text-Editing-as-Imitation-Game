@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-__author__ = 'Author'
-__email__ = 'Email'
+__author__ = 'Shining'
+__email__ = 'ning.shi@ualberta.ca'
 
 
 # dependency
@@ -14,11 +14,11 @@ from collections import Counter
 import numpy as np
 import torch
 # private
-from envs import aor, aes, aec, pun
+from envs import aor, aes, aec
 from src.models import (base_seq2seq_lstm_model, seq2seq_lstm_model
-	, base_lstm_model, lstm_model, lm_model, lm_lstm_model
+	, base_lstm_model, lstm_model
 	, lstm0_model, lstm1_model, lstm2_model)
-from src.trainers import seq2seq_trainer, lm_trainer
+from src.trainers import seq2seq_trainer
 from src.utils import augmentor, datasets, preprocessor, postprocessor
 
 
@@ -44,8 +44,6 @@ def get_env(config):
 		return aes.GameEnv(metric=config.metric)
 	elif config.env == 'aec':
 		return aec.GameEnv(metric=config.metric)
-	elif config.env == 'pun':
-		return pun.GameEnv(metric=config.metric)
 	else:
 		raise NotImplementedError
 
@@ -58,10 +56,6 @@ def get_model(config):
 		return base_lstm_model.ModelGraph(config)
 	elif config.model == 'lstm':
 		return lstm_model.ModelGraph(config)
-	elif config.model == 'lm':
-		return lm_model.ModelGraph(config)
-	elif config.model == 'lm_lstm':
-		return lm_lstm_model.ModelGraph(config)
 	elif config.model == 'lstm0':
 		return lstm0_model.ModelGraph(config)
 	elif config.model == 'lstm1':
@@ -72,32 +66,23 @@ def get_model(config):
 		raise NotImplementedError
 
 def get_trainer(config):
-	if config.model in ['lm', 'lm_lstm']:
-		return lm_trainer
-	else:
 		return seq2seq_trainer
 
 def get_dataset(config):
 	if config.env in ['aor', 'aes', 'aec']:
 		return datasets.AEDataset
-	elif config.env == 'pun':
-		return datasets.PunDataset
 	else:
 		raise NotImplementedError
 
 def get_augmentor(config):
 	if config.env in ['aor', 'aes', 'aec']:
 		return augmentor.generic_augmentor
-	elif config.env == 'pun':
-		return augmentor.online_pun_augmentor
 	else:
 		raise NotImplementedError
 
 def get_preprocessor(config):
 	if config.env in ['aor', 'aes', 'aec']:
 		return preprocessor.ae_preprocessor
-	elif config.env == 'pun':
-		return preprocessor.pun_preprocessor
 	else:
 		raise NotImplementedError
 
@@ -196,7 +181,6 @@ def show_config(config):
 	general_info += '\nsrc vocab size: {}'.format(config.src_vocab_size)
 	general_info += '\ntgt vocab size: {}'.format(config.tgt_vocab_size)
 	general_info += '\nmodel: {}'.format(config.model)
-	general_info += '\nlanguage model: {}'.format(config.lm)
 	general_info += '\ntrainable parameters: {:,.0f}'.format(config.num_parameters)
 	general_info += '\nmax trajectory length: {}'.format(config.max_infer_step)
 	general_info += '\nmax state sequence length: {}'.format(config.max_seq_len)
@@ -232,9 +216,10 @@ def padding(xs, max_len, config):
 	else:
 		raise NotImplementedError
 
-# without language model
 def rec_infer(xs, xs_info, env, model, max_infer_step, config, done=False):
-	# recursive inference in valudation and testing
+	"""
+	The function of recursive inference in valudation and testing.
+	"""
 	if max_infer_step == 0:
 		return xs, xs_info, False
 	else:
@@ -273,39 +258,3 @@ def one_step_infer(xs, ys_, env, config):
 			xs[i] = env.one_step_infer(xs[i], ys_[i])
 	xs = [torch.Tensor(translate(x, env.vocab_dict['src_token2idx'])) for x in xs]
 	return padding(xs, config.max_seq_len, config), done
-
-# for language model
-def lm_rec_infer(raw_xs, raw_x_masks, xs, x_masks, max_infer_step, model, env, preprocessor, tokenizer, config, done=False):
-	# recursive inference in valudation and testing
-	if max_infer_step == 0:
-		return raw_xs, raw_x_masks, xs, x_masks, False
-	else:
-		raw_xs, raw_x_masks, xs, x_masks, done = lm_rec_infer(
-			raw_xs, raw_x_masks, xs, x_masks, max_infer_step-1
-			, model, env, preprocessor, tokenizer, config, done) 
-		if done:
-			return raw_xs, raw_x_masks, xs, x_masks, done
-		else:
-			ys_ = model(xs, x_masks)
-			return lm_one_step_infer(
-				raw_xs, raw_x_masks, x_masks, ys_
-				, env, preprocessor, tokenizer, config)
-
-def lm_one_step_infer(raw_xs, raw_x_masks, x_masks, ys_, env, preprocessor, tokenizer, config): 
-	ys_ = postprocessor.action_processor(ys_, env)
-	# mask completed sequences
-	mask = ~(np.array(ys_) == env.DONE).all(axis=-1)
-	if not mask.any():
-		done = True
-	else:
-		done = False
-		idxes = np.arange(len(raw_xs))[mask]
-		if config.env == 'pun':
-			for i in idxes:
-				if len(raw_xs[i]) < config.max_seq_len:
-					raw_xs[i], raw_x_masks[i] = env.one_step_infer(raw_xs[i], raw_x_masks[i], ys_[i])
-		else:
-			raise NotImplementedError
-	xs, x_masks = preprocessor(raw_xs, None, tokenizer, env, config)
-	xs, x_masks = (torch.LongTensor(_).to(config.device) for _ in (xs, x_masks))
-	return raw_xs, raw_x_masks, xs, x_masks, done
