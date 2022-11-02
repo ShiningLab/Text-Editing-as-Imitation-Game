@@ -1,7 +1,7 @@
 # Recurent-Text-Editing: Raw Data Generation
 
 ## Introduction
-This folder contains code to generate raw datasets for the Arithmetic Operators Restoration (AOR), Arithmetic Equation Simplification (AES), and Arithmetic Equation Correction (AEC).
+This directory is adapted from [here](https://github.com/ShiningLab/Recurrent-Text-Editing/tree/master/data). It contains code to generate raw datasets for the Arithmetic Operators Restoration (AOR), Arithmetic Equation Simplification (AES), and Arithmetic Equation Correction (AEC).
 
 ## Parameters
 + N - the number of unique integers
@@ -49,15 +49,6 @@ train size 7000 (7000, 2)
 val size 1500 (1500, 2)
 test size 1500 (1500, 2)
 find output from aor/10N/5L/10000D
-```
-
-## Data Pre-processing
-Please copy datasets to **code/main/res/data** for data pre-processing.
-```
-$ cd ..
-$ cp -r data/aor main/res/data/aor/
-$ cp -r data/aes main/res/data/aes/
-$ cp -r data/aec main/res/data/aec/
 ```
 
 ## Authors
