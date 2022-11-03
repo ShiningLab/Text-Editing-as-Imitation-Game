@@ -25,7 +25,7 @@ class Config():
 		# trajectory generator - lcs, levenshtein, damerau-levenshtein, self
 		self.metric = 'levenshtein'
 		# model - base_seq2seq_lstm, seq2seq_lstm
-		# base_lstm, lstm, lstm0
+		# base_lstm, lstm, lstm0, lstm1, lstm2
 		self.model = 'base_seq2seq_lstm'
 		# trajectory augmentation
 		self.aug_trajectory = False

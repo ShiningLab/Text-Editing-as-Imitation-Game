@@ -6,16 +6,32 @@ This repository is for the paper Text Editing as Imitation Game in *Findings of 
 
 ## Directory
 + **main/env** - Game Environment
-+ **main/res** - Resource
-+ **main/src** - Source Code
++ **main/res** - Resources including model check points, datasets, and experiment records
++ **main/src** - Source code including model structures, training pipelines, and utility functions
 ```
-Text-Editing-AS-Imitation-Game/
+Text-Editing-as-Imitation-Game
 ├── README.md
-└── main
+├── assets
+├── main
+│   ├── config.py
+│   ├── envs
+│   ├── main.py
+│   ├── res
+│   │   ├── ckpts
+│   │   ├── data
+│   │   └── log
+│   └── src
+│       ├── models
+│       ├── trainers
+│       └── utils
+└── requirements.txt
 ```
 
 ## Dependencies
-+ python >= 3.8.5
++ python >= 3.10.6
++ tqdm >= 4.64.1
++ numpy >= 1.23.4
++ torch >= 1.13.0
 
 ## Setup
 Please ensure required packages are already installed. A virtual environment is recommended.
@@ -36,14 +52,20 @@ $ python main.py
 ## Output
 If everything goes well, you should see a similar progressing shown as below.
 ```
-$ TODO.
+Initializing Game Environment ...
+Constructing Editops with Metric levenshtein ...
+
+*Configuration*
+device: cuda
+random seed: 0
+...
+
+Train Epoch 0 Total Step 27 Loss:2.2370 Token Acc:0.2269 Seq Acc:0.1189
+ src: 4 + 7 - 6 - 2 == 3
+ tar: <done> <done>
+ pred: <done> +
+...
 ```
-
-## Demo
-TODO.
-
-## Note
-TODO.
 
 ## Authors
 * **Ning Shi** - mrshininnnnn@gmail.com
