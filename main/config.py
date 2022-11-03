@@ -7,8 +7,6 @@ __email__ = 'ning.shi@ualberta.ca'
 # dependency
 # built-in
 import os
-# public
-from transformers import AutoConfig
 
 
 class Config():

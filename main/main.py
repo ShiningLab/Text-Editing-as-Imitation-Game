@@ -11,7 +11,6 @@ import random
 # public
 import torch
 import numpy as np
-from transformers import AutoTokenizer
 # private
 from config import Config
 from src.utils import helper
