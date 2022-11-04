@@ -17,16 +17,16 @@ class Config():
 		# aor for Arithmetic Operators Restoration
 		# aes for Arithmetic Equation Simplification
 		# aec for Arithmetic Equation Correction
-		self.env = 'aor'
-		self.N = 10
+		self.env = 'aes'
+		self.N = 100 if self.env == 'aes' else 10
 		self.L = 5
 		self.D = 10000
 		env_name = '{}_{}N_{}L_{}D'.format(self.env, self.N, self.L, self.D)
-		# trajectory generator - lcs, levenshtein, damerau-levenshtein, self
-		self.metric = 'levenshtein'
+		# trajectory generator - lcs, levenshtein, self
+		self.metric = 'self' if self.env == 'aes' else 'levenshtein'
 		# model - base_seq2seq_lstm, seq2seq_lstm
 		# base_lstm, lstm, lstm0, lstm1, lstm2
-		self.model = 'base_seq2seq_lstm'
+		self.model = 'lstm'
 		# trajectory augmentation
 		self.aug_trajectory = False
 		# learning
