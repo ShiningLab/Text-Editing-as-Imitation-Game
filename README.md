@@ -5,7 +5,7 @@ This repository is for the paper Text Editing as Imitation Game in *Findings of 
 **The finalized code and processed data will be released soon.**
 
 ## Directory
-+ **main/env** - Game Environment
++ **main/env** - Game Environments
 + **main/res** - Resources including model check points, datasets, and experiment records
 + **main/src** - Source code including model structures, training pipelines, and utility functions
 ```
@@ -39,12 +39,12 @@ Please ensure required packages are already installed. A virtual environment is 
 $ cd Text-Editing-AS-Imitation-Game
 $ cd main
 $ pip install pip --upgrade
+$ pip install -r requirements.txt
 ```
 
 ## Run
 Before training, please take a look at the **config.py** to ensure training configurations.
 ```
-$ cd main
 $ vim config.py
 $ python main.py
 ```

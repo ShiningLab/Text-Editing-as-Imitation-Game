@@ -23,7 +23,7 @@ class GameEnv(TextEditEnv):
 		self.operators = set(['+', '-', '*', '/', '=='])
 		# 3 for [position, position, token]
 		self.tgt_seq_len = 3
-		if self.metric == 'self':  # for self defined edit metric
+		if metric == 'self':  # for self defined edit metric
 			# trajectory generator
 			self.get_trajectories = self.get_self_trajectories
 			self.one_step_infer = self.one_step_self_infer
