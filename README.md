@@ -1,6 +1,6 @@
 # Text-Editing-AS-Imitation-Game
 
-This repository is for the paper Text Editing as Imitation Game in *Findings of the Association for Computational Linguistics: EMNLP 2022*.
+This repository is for the paper [Text Editing as Imitation Game](https://arxiv.org/abs/2210.12276) in *Findings of the Association for Computational Linguistics: EMNLP 2022*.
 
 ## Directory
 + **main/env** - Game Environments
