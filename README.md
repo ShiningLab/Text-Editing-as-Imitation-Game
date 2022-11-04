@@ -2,8 +2,6 @@
 
 This repository is for the paper Text Editing as Imitation Game in *Findings of the Association for Computational Linguistics: EMNLP 2022*.
 
-**The finalized code and processed data will be released soon.**
-
 ## Directory
 + **main/env** - Game Environments
 + **main/res** - Resources including model check points, datasets, and experiment records
@@ -41,6 +39,15 @@ $ cd main
 $ pip install pip --upgrade
 $ pip install -r requirements.txt
 ```
+
+## Models
++ AR - base_seq2seq_lstm
++ AR* - seq2seq_lstm
++ NAR - base_lstm
++ D2 (NAR*) - lstm
++ Decoder0 - lstm0
++ Linear - lstm1
++ Shared D2 - lstm2
 
 ## Run
 Before training, please take a look at the **config.py** to ensure training configurations.
