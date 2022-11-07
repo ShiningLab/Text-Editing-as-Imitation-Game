@@ -57,7 +57,7 @@ $ python main.py
 ```
 
 ## Output
-If everything goes well, you should see a similar progressing shown as below.
+If everything goes well, there should be a similar progressing shown as below.
 ```
 Initializing Game Environment ...
 Constructing Editops with Metric levenshtein ...
