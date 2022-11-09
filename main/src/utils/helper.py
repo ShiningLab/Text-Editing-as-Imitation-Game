@@ -174,7 +174,7 @@ def save_check_point(step, epoch, model_state_dict, opt_state_dict, log_dict, pa
 
 def show_config(config):
 	# general information
-	general_info = '\n*Configuration*'
+	general_info = '*Configuration*'
 	general_info += '\ndevice: {}'.format(config.device)
 	general_info += '\nrandom seed: {}'.format(config.seed)
 	general_info += '\ngame: {}'.format(config.env)

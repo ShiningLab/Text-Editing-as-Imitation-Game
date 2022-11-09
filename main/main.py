@@ -44,6 +44,7 @@ class Agent(object):
 		self.env = helper.get_env(self.config)
 		# self.env.set_seed(self.config.seed)
 		if self.config.env in ['aor', 'aes', 'aec']:
+			print('Constructing Editops with Metric %s ...' % self.config.metric)
 			self.env.make(N=self.config.N, L=self.config.L, D=self.config.D)
 			self.config.max_seq_len = self.env.max_seq_len
 		else:

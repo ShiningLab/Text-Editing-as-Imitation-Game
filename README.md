@@ -57,21 +57,46 @@ $ python main.py
 ```
 
 ## Output
-If everything goes well, there should be a similar progressing shown as below.
+If everything goes well, there should be a similar progressing shown below.
 ```
 Initializing Game Environment ...
 Constructing Editops with Metric levenshtein ...
-
 *Configuration*
-device: cuda
+device: cpu
 random seed: 0
-...
+game: aor
+src vocab size: 16
+tgt vocab size: 18
+model: lstm
+trainable parameters: 13,184,580
+max trajectory length: 6
+max state sequence length: 10
+max action sequence length: 2
+if load check point: False
+original train size: 7000
+train size: 7000
+valid size: 1500
+test size: 1500
+if sampling: True
+batch size: 256
+learning rate: 0.001
 
-Train Epoch 0 Total Step 27 Loss:2.2370 Token Acc:0.2269 Seq Acc:0.1189
- src: 4 + 7 - 6 - 2 == 3
+Train Loss:2.8253 LR:0.001000: 100%|█████████████████████████████████████| 27/27 [00:55<00:00,  2.05s/it]
+Train Epoch 0 Total Step 27 Loss:4.3506 Token Acc:0.2886 Seq Acc:0.1972
+ src: - 2 + 11 - 6 + 8 == 11
  tar: <done> <done>
- pred: <done> +
-...
+ pred: <done> <done>
+Valid Loss:2.7447 LR:0.001000: 100%|██████████████████████████████████████| 6/6 [00:03<00:00,  1.70it/s]
+Valid Epoch 0 Total Step 27 Loss:2.6269 Token Acc:0.5951 Seq Acc:0.4076
+ src: 2 * 2 6 9 6
+ tar: <pos_3> /
+ pred: <pos_1> -
+Test Loss:2.5733 LR:0.001000: 100%|███████████████████████████████████████| 6/6 [00:03<00:00,  1.72it/s]
+Test Epoch 0 Total Step 27 Loss:2.6115 Token Acc:0.5934 Seq Acc:0.4121
+ src: 6 + 10 - 2 9 5
+ tar: <pos_5> -
+ pred: <pos_5> +
+ ...
 ```
 
 ## Authors

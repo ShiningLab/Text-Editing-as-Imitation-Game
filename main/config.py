@@ -17,7 +17,7 @@ class Config():
 		# aor for Arithmetic Operators Restoration
 		# aes for Arithmetic Equation Simplification
 		# aec for Arithmetic Equation Correction
-		self.env = 'aes'
+		self.env = 'aor'
 		self.N = 100 if self.env == 'aes' else 10
 		self.L = 5
 		self.D = 10000

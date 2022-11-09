@@ -18,10 +18,9 @@ class Editops:
             -metric: the edit distance algorithm, shoule be one of lcs/levenshtein/damerau-levenshtein.
         '''
         metric = metric.lower()
-        if metric != 'lcs' and metric != 'levenshtein' and not metric.startswith('damerau'):
+        if metric not in ['lcs', 'levenshtein', 'damerau']:
             raise NotImplementedError('the parameter metric shoule be one of lcs/levenshtein/damerau-levenshtein.')
         self.metric = metric
-        print('Constructing Editops with Metric %s ...' % metric)
         self.is_damerau = self.metric.startswith('damerau')
     
     def __levenshtein_distance_matrix(self, string1, string2):
