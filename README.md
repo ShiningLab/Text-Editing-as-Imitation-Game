@@ -2,6 +2,8 @@
 
 This repository is for the paper [Text Editing as Imitation Game](https://arxiv.org/abs/2210.12276) in *Findings of the Association for Computational Linguistics: EMNLP 2022*.
 
+[[Poster](https://github.com/ShiningLab/Text-Editing-as-Imitation-Game/blob/main/assets/TechAid%20ReverseExpo%20Poster.pdf)] [[Slides](https://github.com/ShiningLab/Text-Editing-as-Imitation-Game/blob/main/assets/Text%20Editing%20as%20Imitation%20Game%20Slides.pdf)] [[Video](https://www.youtube.com/watch?v=YwOcrWyRbos)]
+
 ## Directory
 + **main/env** - Game Environments
 + **main/res** - Resources including model check points, datasets, and experiment records
