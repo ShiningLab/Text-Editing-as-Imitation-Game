@@ -1,6 +1,6 @@
 # Text-Editing-AS-Imitation-Game
 
-This repository is for the paper [Text Editing as Imitation Game](https://arxiv.org/abs/2210.12276) in *Findings of the Association for Computational Linguistics: EMNLP 2022*.
+This repository is for the paper [Text Editing as Imitation Game](https://aclanthology.org/2022.findings-emnlp.114/) in *Findings of the Association for Computational Linguistics: EMNLP 2022*.
 
 [[Poster](https://github.com/ShiningLab/Text-Editing-as-Imitation-Game/blob/main/assets/Text%20Editing%20as%20Imitation%20Game%20Poster.pdf)] [[Slides](https://github.com/ShiningLab/Text-Editing-as-Imitation-Game/blob/main/assets/Text%20Editing%20as%20Imitation%20Game%20Slides.pdf)] [[Video](https://www.youtube.com/watch?v=YwOcrWyRbos)]
 
@@ -106,5 +106,22 @@ Test Epoch 0 Total Step 27 Loss:2.6115 Token Acc:0.5934 Seq Acc:0.4121
 
 ## BibTex
 ```
-TODO.
+@inproceedings{shi-etal-2022-text,
+    title = "Text Editing as Imitation Game",
+    author = "Shi, Ning  and
+      Tang, Bin  and
+      Yuan, Bo  and
+      Huang, Longtao  and
+      Pu, Yewen  and
+      Fu, Jie  and
+      Lin, Zhouhan",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2022",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.findings-emnlp.114",
+    pages = "1583--1594",
+    abstract = "Text editing, such as grammatical error correction, arises naturally from imperfect textual data. Recent works frame text editing as a multi-round sequence tagging task, where operations {--} such as insertion and substitution {--} are represented as a sequence of tags. While achieving good results, this encoding is limited in flexibility as all actions are bound to token-level tags. In this work, we reformulate text editing as an imitation game using behavioral cloning. Specifically, we convert conventional sequence-to-sequence data into state-to-action demonstrations, where the action space can be as flexible as needed. Instead of generating the actions one at a time, we introduce a dual decoders structure to parallel the decoding while retaining the dependencies between action tokens, coupled with trajectory augmentation to alleviate the distribution shift that imitation learning often suffers. In experiments on a suite of Arithmetic Equation benchmarks, our model consistently outperforms the autoregressive baselines in terms of performance, efficiency, and robustness. We hope our findings will shed light on future studies in reinforcement learning applying sequence-level action generation to natural language processing.",
+}
 ```
