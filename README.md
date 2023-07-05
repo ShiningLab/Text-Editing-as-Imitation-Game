@@ -2,7 +2,7 @@
 
 This repository is for the paper [Text Editing as Imitation Game](https://aclanthology.org/2022.findings-emnlp.114/). In *Findings of the Association for Computational Linguistics: EMNLP 2022*, pages 1583–1594, Abu Dhabi, United Arab Emirates. Association for Computational Linguistics.
 
-[[Poster](https://www.shininglab.ai/assets/posters/Text%20Editing%20as%20Imitation%20Game.pdf)] [[Slides](https://www.shininglab.ai/assets/slides/Text_Editing_as_Imitation_Game.pdf)] [[Video](https://www.youtube.com/watch?v=YwOcrWyRbos)]
+[[Poster](https://www.shininglab.ai/assets/posters/Text%20Editing%20as%20Imitation%20Game.pdf)] [[Slides](https://www.shininglab.ai/assets/slides/Text%20Editing%20as%20Imitation%20Game.pdf)] [[Video](https://www.youtube.com/watch?v=YwOcrWyRbos)]
 
 ## Directory
 + **main/env** - Game Environments
